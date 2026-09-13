@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func comparisonBenchmark(name string, serial func(*testing.B), parallel func(*testing.B, int), threadCounts []int) {
+func CustomEfficiencyStats(name string, serial func(*testing.B), parallel func(*testing.B, int), threadCounts []int) {
 	// fmt.Printf("%s/Serial\n", name)
 	serialB := testing.Benchmark(serial)
 	// fmt.Println(serialB.String())
