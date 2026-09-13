@@ -1,4 +1,4 @@
-package custom
+package parallel
 
 import (
 	"fmt"
