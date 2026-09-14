@@ -15,8 +15,8 @@ func CustomEfficiencyStats(serial func(*testing.B), parallel func(*testing.B, in
 		})
 
 		speedup := float32(serialB.NsPerOp()) / float32(parallelB.NsPerOp())
-		maxCost := float32(parallelB.NsPerOp() * int64(threadCount)) // TODO: ideally use sum thread wall time for this metric
+		maxCost := parallelB.NsPerOp() * int64(threadCount) // TODO: ideally use sum thread wall time for this metric
 
-		fmt.Printf("\t[%dt]\tspeedup:%f\tefficiency:%f\tmax total cost:%fns\ttotal overhead time:%fns\n", threadCount, speedup, speedup/float32(threadCount), maxCost, maxCost-float32(serialB.NsPerOp()))
+		fmt.Printf("\t[%dt]\tspeedup:%f\tefficiency:%f\tmax total cost:%dns\ttotal overhead time:%dns\n", threadCount, speedup, speedup/float32(threadCount), maxCost, maxCost-serialB.NsPerOp())
 	}
 }
